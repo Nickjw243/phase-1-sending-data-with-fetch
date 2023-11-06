@@ -1,5 +1,11 @@
 // Add your code here
 
+function addUl(el) {
+    const body = document.getElementsByTagName('body')
+    const createEl = document.createElement('ul')
+    // createEl.textContent = el
+    body.append(createEl)
+}
 
 function submitData(nameEl, emailEl) {
     const url = "http://localhost:3000/users"
@@ -16,15 +22,15 @@ function submitData(nameEl, emailEl) {
 
     let userObject = {
         "name": nameEl,
-        "email": emailEl
+        "email": emailEl,
     }
 
 
-    fetch(url)
-        .then((res) => res.json())
-        .then(data => {
-            console.log(data.email)
-        })
+    // fetch(url)
+    //     .then((res) => res.json())
+    //     .then(data => {
+    //         console.log(data.email)
+    //     })
 
     return fetch(url, {
         method: "POST",
@@ -33,9 +39,9 @@ function submitData(nameEl, emailEl) {
             "Accept": "application/json",
         },
         body: JSON.stringify(userObject)
-
     })
-
-
-
+        .then((res) => res.json())
+        .then((data) => {
+            return data.id
+        })
 }
