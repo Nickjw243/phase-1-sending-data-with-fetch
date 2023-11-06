@@ -1,19 +1,13 @@
-// Add your code here
 
-function addUl(el) {
-    const body = document.getElementsByTagName('body')
-    const createEl = document.createElement('ul')
-    // createEl.textContent = el
-    body.append(createEl)
+
+function addId(el) {
+    const li = document.createElement('li')
+    li.textContent = el
+    document.body.append(li)
 }
 
 function submitData(nameEl, emailEl) {
     const url = "http://localhost:3000/users"
-    // fetch(url)
-    //     .then((res) => res.json())
-    //     .then(data => {
-    //         console.log(data)
-    //     })
 
     // Make POST request to fill users with data 
     // 1) Get the data we want to POST
@@ -25,13 +19,6 @@ function submitData(nameEl, emailEl) {
         "email": emailEl,
     }
 
-
-    // fetch(url)
-    //     .then((res) => res.json())
-    //     .then(data => {
-    //         console.log(data.email)
-    //     })
-
     return fetch(url, {
         method: "POST",
         headers: {
@@ -42,6 +29,6 @@ function submitData(nameEl, emailEl) {
     })
         .then((res) => res.json())
         .then((data) => {
-            return data.id
+            addId(data.id)
         })
 }
