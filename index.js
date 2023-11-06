@@ -19,6 +19,13 @@ function submitData(nameEl, emailEl) {
         "email": emailEl
     }
 
+
+    fetch(url)
+        .then((res) => res.json())
+        .then(data => {
+            console.log(data.email)
+        })
+
     return fetch(url, {
         method: "POST",
         headers: {
@@ -28,5 +35,7 @@ function submitData(nameEl, emailEl) {
         body: JSON.stringify(userObject)
 
     })
+
+
 
 }
